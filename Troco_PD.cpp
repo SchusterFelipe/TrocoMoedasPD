@@ -33,6 +33,16 @@ int main() {
             minMoedas[v] = melhor;
         }
 
+        // ================================
+        //     VERIFICAÇÃO DE IMPOSSÍVEL
+        // ================================
+        if (minMoedas[valor] == -1) {
+            cout << "\nNao existe troco exato para " << valor 
+                 << " centavos com essas moedas.\n";
+            cout << "Digite outro valor (ou 0 para sair): ";
+            continue;
+        }
+
         cout << "\nTroco para " << valor << " centavos:\n";
 
         // Vetor para contar quantas moedas de cada tipo foram usadas
@@ -46,7 +56,7 @@ int main() {
                 if (restante - m >= 0 &&
                     minMoedas[restante - m] == minMoedas[restante] - 1) {
 
-                    contagem[i]++;   // soma 1 moeda desse tipo
+                    contagem[i]++;
                     restante -= m;
                     break;
                 }
